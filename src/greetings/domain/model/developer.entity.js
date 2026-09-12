@@ -1,4 +1,5 @@
 import {PersonName} from "../../../shared/domain/model/person-name.value-object.js";
+import {DeveloperId} from "./developer-id.value-object.js";
 
 export class Developer {
     _id;
