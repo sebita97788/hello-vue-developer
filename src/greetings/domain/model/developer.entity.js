@@ -43,7 +43,7 @@ export class Developer {
      * @returns {string}
      */
     get fullName() {
-        return this._name ? this._name.fullName : "Unknown";
+        return this._name?.fullName || "Unknown";
     }
 
     /**
