@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2026-09-16
+
+### Fixed
+- `Developer.fullName` returned an empty string instead of `"Unknown"` for an anonymous or partially-named developer. The ternary checked whether `_name` existed (always true,
+  `_name` is never `null`) instead of whether it actually held a name. Now checks the name's own content, and defends against a `null`/`undefined` `_name` too, since `_name` uses
+  the `_` convention rather than a true private field (Vue's Proxy-based reactivity cannot read native `#` fields).
+
 ## [1.0.0] - 2026-09-16
 
 ### Added
