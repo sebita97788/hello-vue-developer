@@ -6,7 +6,7 @@ const firstName = ref("");
 const lastName = ref("");
 const errorMessage = ref("");
 
-const emit = defineEmits(["developer-registered"]);
+const emit = defineEmits(["developer-registered", "registration-deferred"]);
 
 function clearFields() {
   firstName.value = "";
@@ -23,6 +23,11 @@ function submitRegistrationRequest() {
   } else {
     errorMessage.value = "Please provide both first name and last name.";
   }
+}
+
+function deferRegistration() {
+  emit('registration-deferred', { developer: null});
+  clearFields();
 }
 </script>
 
@@ -42,6 +47,7 @@ function submitRegistrationRequest() {
         </div>
         <div class="actions">
           <button type="submit">Register</button>
+          <button type="button" @click="deferRegistration">Later</button>
         </div>
       </form>
       <p v-if="errorMessage" class="error" role="alert">{{ errorMessage }}</p>
